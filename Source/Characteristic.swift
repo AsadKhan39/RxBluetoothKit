@@ -41,7 +41,7 @@ public class Characteristic {
     }
 
     convenience init(characteristic: CBCharacteristic, peripheral: Peripheral) {
-        let service = Service(peripheral: peripheral, service: characteristic.service)
+        let service = Service(peripheral: peripheral, service: characteristic.service!)
         self.init(characteristic: characteristic, service: service)
     }
 
@@ -190,3 +190,4 @@ extension Characteristic: UUIDIdentifiable {}
 public func == (lhs: Characteristic, rhs: Characteristic) -> Bool {
     return lhs.characteristic == rhs.characteristic
 }
+
