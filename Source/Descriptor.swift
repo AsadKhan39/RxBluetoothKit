@@ -29,8 +29,8 @@ public class Descriptor {
     }
 
     convenience init(descriptor: CBDescriptor, peripheral: Peripheral) {
-        let service = Service(peripheral: peripheral, service: descriptor.characteristic.service)
-        let characteristic = Characteristic(characteristic: descriptor.characteristic, service: service)
+        let service = Service(peripheral: peripheral, service: (descriptor.characteristic?.service!)!)
+        let characteristic = Characteristic(characteristic: descriptor.characteristic!, service: service)
         self.init(descriptor: descriptor, characteristic: characteristic)
     }
 
@@ -113,3 +113,4 @@ extension Descriptor: Equatable {}
 public func == (lhs: Descriptor, rhs: Descriptor) -> Bool {
     return lhs.descriptor == rhs.descriptor
 }
+
